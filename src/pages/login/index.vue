@@ -362,8 +362,7 @@ export default {
     color: #fff;
     font-weight: 400;
 }
-.login .wrapper .loginForm .active {
-}
+
 .login .wrapper .loginForm .login-btn {
     margin-top: 40px;
     width: 100%;
