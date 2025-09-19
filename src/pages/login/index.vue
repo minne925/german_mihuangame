@@ -3,80 +3,101 @@
         <!-- <div class="bg-img"></div> -->
         <div class="video-background">
             <!-- 视频播放器 -->
-            <video ref="videoPlayer" autoplay muted loop playsinline @ended="onVideoEnded" :src="currentVideo"
-                class="background-video"></video>
+            <video
+            ref="videoPlayer"
+            autoplay
+            muted
+            loop
+            playsinline
+            @ended="onVideoEnded"
+            :src="currentVideo"
+            class="background-video"
+            ></video>
         </div>
         <div class="bg-wrapper">
             <div class="login">
                 <van-nav-bar class="nav-bar" :border="false">
                     <template #left>
+                        <!-- <van-icon
+                            name="arrow-left"
+                            color="#fff"
+                            @click="navigateToHome"
+                        /> -->
                     </template>
+                            <!-- <template #right>
+                                <div class="language-selector">
+                                    <select
+                                        v-model="selectedLanguage"
+                                        @change="onLanguageChange"
+                                    >
+                                        <option
+                                            v-for="language in languages"
+                                            :key="language.value"
+                                            :value="language.value"
+                                        >
+                                            {{ language.text }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </template> -->
                 </van-nav-bar>
                 <div class="wrapper">
                     <div class="logo-container">
+                        <!-- <div class="logo-wrapper">
+                            <img
+                                v-if="this.$store.getters.getBaseInfo.ico"
+                                class="logo-img"
+                                :src="
+                                    this.$store.getters.getBaseInfo.ico !==
+                                    undefined
+                                        ? this.$store.getters.getBaseInfo.ico
+                                        : '/img/null.png'
+                                "
+                            />
+                        </div> -->
                     </div>
                     <div class="title">{{ $t('login.login') }}</div>
                     <div class="loginForm">
-                        <van-field v-model="username" clearable input-align="left" class="input"
-                            :placeholder="$t('login.inp_username')" />
-                        <van-field v-model="password" :type="passwordType" input-align="left" class="input"
-                            :placeholder="$t('login.inp_pwd')">
+                        <van-field
+                            v-model="username"
+                            clearable
+                            input-align="left"
+                            class="input"
+                            :placeholder="$t('login.inp_username')"
+                        />
+                        <van-field
+                            v-model="password"
+                            :type="passwordType"
+                            input-align="left"
+                            class="input"
+                            :placeholder="$t('login.inp_pwd')"
+                        >
                             <template slot="right-icon">
-                                <van-icon :name="passwordType === 'password'
-                                    ? 'closed-eye'
-                                    : 'eye-o'
-                                    " @click="switchPasswordType" />
+                                <van-icon
+                                    :name="
+                                        passwordType === 'password'
+                                            ? 'closed-eye'
+                                            : 'eye-o'
+                                    "
+                                    @click="switchPasswordType"
+                                />
                             </template>
                         </van-field>
                         <div class="reset-text" @click="toServer()">
                             <span>{{ $t('login.forget_pwd') }}</span>
                         </div>
-                        <van-button class="login-btn" type="primary" size="normal" @click="doLogin()">{{
-                            $t('login.login')
-                            }}</van-button>
-                        <van-button type="primary" size="normal" @click="toRegister()" class="register-text">
+                        <van-button
+                            class="login-btn"
+                            type="primary"
+                            size="normal"
+                            @click="doLogin()"
+                            >{{ $t('login.login') }}</van-button>
+                        <van-button type="primary"
+                        size="normal" @click="toRegister()" class="register-text">
                             {{ $t('login.to_reg') }}
                         </van-button>
+
                     </div>
-                </div>
-                <div class="multibrand-footer__legal-column footer-column">
-                    <ul>
-                        <li>
-                            <a href="/uk/compliance/terms-and-conditions" data-link-event="cta:Terms &amp; conditions"
-                                aria-label="Review the terms &amp; conditions about using our UK website, products and/or services."
-                                target="_self" class="cta link skip-animation"> <span class="label"><span>Terms &amp;
-                                        conditions</span></span>
-                                <span class="short label">
-                                    <span>Terms &amp; conditions</span>
-                                </span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="https://www.blackrock.com/corporate/compliance/privacy-notice" rel="noopener"
-                                data-link-event="cta:Privacy Notice"
-                                aria-label="Review our Privacy notice about protecting your personal and financial information when visiting BlackRock websites."
-                                target="_blank" class="cta link skip-animation"> <span class="label"><span>Privacy
-                                        Notice</span></span>
-                                <span class="short label">
-                                    <span>Privacy Notice</span>
-                                </span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="https://www.blackrock.com/corporate/compliance/privacy-notice#cookie-notice"
-                                rel="noopener" data-link-event="cta:Cookie Notice"
-                                aria-label="Read BlackRock's cookie notice when visiting BlackRock websites."
-                                target="_blank" class="cta link skip-animation"> <span class="label"><span>Cookie
-                                        Notice</span></span>
-                                <span class="short label">
-                                    <span>Cookie Notice</span>
-                                </span>
-                            </a>
-                        </li>
-
-                    </ul>
                 </div>
             </div>
         </div>
@@ -108,21 +129,32 @@ export default {
             selectedLanguage: '', // 默认选中的语言
             languages: {},
             videos: [
-                '/img/login/video1.mp4',
-                '/img/login/video2.mp4',
-                '/img/login/video3.mp4',
-                '/img/login/video4.mp4'],
+            '/img/login/video1.mp4',
+            '/img/login/video2.mp4',
+            '/img/login/video3.mp4',
+            '/img/login/video4.mp4'],
             currentIndex: 3,
         }
     },
     computed: {
-        // 动态获取当前视频
-        currentVideo() {
-            console.log('index', this.currentIndex)
-            return this.videos[this.currentIndex];
-        }
-    },
+    // 动态获取当前视频
+    currentVideo() {
+        console.log('index',this.currentIndex)
+      return this.videos[this.currentIndex];
+    }
+  },
     methods: {
+        onVideoEnded() {
+            // this.currentIndex = (this.currentIndex + 1) % this.videos.length;
+            // this.$refs.videoPlayer.load();
+            // // 监听 canplay 事件，确保视频已经可以播放
+            // this.$refs.videoPlayer.addEventListener('canplay', () => {
+            //     this.$refs.videoPlayer.play().catch(error => {
+            //         console.error('视频播放失败:', error);
+            //     });
+            // }, { once: true });  // 只监听一次
+
+        },
         onLanguageChange() {
             this.$i18n.locale = this.selectedLanguage
             localStorage.setItem('Lang', this.selectedLanguage)
@@ -161,7 +193,7 @@ export default {
                 this.$toast(this.$t('login.inp_pwd') + '！')
                 return false
             }
-            console.log(this.username, this.password)
+            console.log(this.username,this.password)
             this.$http({
                 method: 'get',
                 data: { username: this.username, password: this.password },
@@ -192,9 +224,14 @@ export default {
         }
     },
     created() {
+        // if (localStorage.getItem('token')) {
+        //     return window.history.back()
+        //  }
+        // this.getLang()
+        // this.languages =  languageList;
         this.selectedLanguage = this.$i18n.locale
     },
-    mounted() {
+    mounted(){
         this.$refs.videoPlayer.play();
     }
 }
@@ -203,175 +240,145 @@ export default {
 <style lang="less" scoped>
 @import '../../assets/css/base.css';
 
-// .bg-wrapper {
-//   display: flex;
-//   flex-direction: column;
-//   min-height: 100vh; /* 占满屏幕高度 */
-// }
-
-.login {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.wrapper {
-  flex: 0.6; /* 中间内容撑开 */
-}
-
-/* Footer 固定在底部 */
-.multibrand-footer__legal-column {
-  margin-top: auto;
-  padding: 20px;
-//   background: rgba(190, 38, 38, 0.6); /* 可选：加背景区分 */
-  color: #f10909; /* 字体颜色 */
-}
-
-
 .video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* 确保背景视频在最底层 */
 }
 
 .background-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
+
 
 .login {
-    height: 100vh;
-    /* 占满整个视口 */
-    display: flex;
-    align-items: center;
-    /* 垂直居中 */
-    justify-content: center;
-    /* 水平居中 */
-    background: transparent;
-    /* 保持背景视频 */
+    height: 100%;
 }
-
 .bg-container .bg-wrapper {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: transparent !important;
+    background: transparent !important
 }
-
 .bg-container .bg-wrapper .login .nav-bar {
-    background: transparent;
+    background: 0 0;
+   
 }
-
-.bg-img {
+.bg-img{
     width: 100%;
     min-height: 100vh;
     background: url(/img/login/login-bg.png) no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     position: relative;
 }
 
-/* 统一的内容容器：网页端居中显示，大小和安卓端一致 */
 .login .wrapper {
-    width: 90%;
-    max-width: 420px;
-    /* 限制最大宽度，保证两边留白 */
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    padding: 1.5rem 1rem;
-    background: rgba(0, 0, 0, 0.4);
-    /* 半透明背景提升对比度 */
-    border-radius: 12px;
-    /* 圆角 */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    /* 阴影 */
 }
-
 .logo-container {
     margin: 0 auto;
-    max-width: 300px;
-    width: 60%;
+    width: 45%;
 }
-
 .logo-container .logo-wrapper {
     position: relative;
     padding-bottom: 62.5%;
 }
-
 .logo-container .logo-wrapper .logo-img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    -o-object-fit: contain;
     object-fit: contain;
 }
-
 .login .wrapper .title {
-    line-height: 2.2rem;
+    line-height: 100px;
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 49px;
     font-weight: 700;
     color: #fff;
-    letter-spacing: 2px;
-    margin-top: 1rem;
+    letter-spacing: 5px;
 }
-
 .login .wrapper .loginForm {
-    padding: 1.5rem 0;
+    padding: 60px 5%;
 }
-
 .login .wrapper .loginForm .input {
-    padding: 0.8rem 1rem;
-    margin-top: 1rem;
+    // padding: 10px 20px;
+    padding: 40px 40px;
+    margin-top: 60px;
     border-radius: 50px;
     text-align: center;
-    font-size: 1rem;
+    line-height: 50px;
+    font-size: 30px;
     color: #000;
 }
-
-::v-deep .van-field__right-icon .van-icon,
+::v-deep .van-field__right-icon .van-icon {
+    font-size: 50px;
+}
 ::v-deep .van-icon {
-    font-size: 1.2rem;
+    font-size: 50px;
 }
-
 .login .wrapper .loginForm .reset-text {
-    margin: 0.8rem 0.5rem;
+    margin: 30px 25px;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
-    font-size: 0.85rem;
+    font-size: 24px;
 }
-
 .login .wrapper .loginForm .reset-text span {
     color: #fff;
     font-weight: 500;
 }
-
-.login .wrapper .loginForm .register-text,
-.login .wrapper .loginForm .login-btn {
-    margin-top: 1rem;
+.login .wrapper .loginForm .register-text {
+    // margin: 10px 0;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // font-size: 24px;
+    margin-top: 40px;
     width: 100%;
-    height: 2.8rem;
+    height: 110px;
     border-radius: 50px;
     color: #fff;
     background: @primary-bg;
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 30px;
+    font-weight: bolder;
     border: none;
 }
-
+.login .wrapper .loginForm .register-text span {
+    color: #fff;
+    font-weight: 400;
+}
+.login .wrapper .loginForm .active {
+}
+.login .wrapper .loginForm .login-btn {
+    margin-top: 40px;
+    width: 100%;
+    height: 110px;
+    border-radius: 50px;
+    color: #fff;
+    // background-color: #7e5678;
+    background: @primary-bg;
+    font-size: 30px;
+    font-weight: bolder;
+    border: none;
+}
 .language-selector {
     font-family: Arial, sans-serif;
-    position: fixed;
+    position: fixed; /* 或者根据需要调整位置 */
     top: 10px;
     right: 10px;
     z-index: 1000;
@@ -397,14 +404,5 @@ export default {
 
 .language-selector option {
     padding: 5px 10px;
-}
-
-/* 移动端和平板统一：保持相同布局，不再区分 */
-@media (max-width: 992px) {
-    .login .wrapper {
-        width: 90%;
-        max-width: 420px;
-        padding: 1rem;
-    }
 }
 </style>
