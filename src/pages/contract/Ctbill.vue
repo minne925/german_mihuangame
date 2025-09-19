@@ -58,11 +58,6 @@
                     <van-progress v-if="vo.status == 1" :pivot-text="vo.t" stroke-width="10" :show-pivot="true"
                         track-color="#151515" color="linear-gradient(to right, #f77062, #fe5196)"
                         :percentage="100 - parseFloat(vo.bl ?? 0)" />
-                    <!-- <div class="progress" style="height: 20px;background-color: #2C3445;color: white;text-align: center;">
-                    <div class="progress-bar"
-                        style="background: linear-gradient(to right, #f77062 , #fe5196);border-radius: 8px;">{{ vo.t }}
-                    </div>
-                </div> -->
                 </div>
 
             </div>

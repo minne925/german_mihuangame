@@ -61,9 +61,6 @@
 </template>
 
 <script>
-// import { onMounted, onUnmounted, ref } from 'vue'
-// import $gt from '@/hooks/getI18nData'
-// import { useAppStore } from '@/stores'
 import { getallcoin } from '@/api/contract'
 import { obtain_data } from "@/api/trade";
 import { handleBack } from '@/utils/tools'

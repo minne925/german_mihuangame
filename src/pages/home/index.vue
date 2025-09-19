@@ -3291,10 +3291,6 @@
         <div style="height:60px;"></div>
       </div>
     </div>
-    <!-- 悬浮客服按钮 -->
-    <!-- <div class="floating-customer-service" @click="openCustomerService">
-      <img src="data:image/png;base64,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" alt="客服" />
-    </div> -->
   </div>
   
 </template>
@@ -3352,9 +3348,36 @@ export default {
     });
   },
 };
+
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/68cbe92fb285fd192a490592/1j5e8dp99';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
 </script>
 
 <style lang="less" scoped>
+
+/* 修改 Tawk.to 按钮位置 */
+#tawkchat-minified-wrapper {
+    bottom: 180px !important;  /* 往上移 */
+    right: 40px !important;   /* 往左移 */
+}
+
+/* 修改按钮大小 */
+#tawkchat-minified-button {
+    transform: scale(1.2); /* 放大 20% */
+}
+
+/* 隐藏 Tawk.to 默认 logo */
+#tawkchat-minified-wrapper .tawk-branding {
+    display: none !important;
+}
+
 .home-container {
   position: relative;
   min-height: 100vh;

@@ -11,7 +11,6 @@ Vue.use(Toast);
 const instance = axios.create({
     baseURL: window.location.origin + '/api',
     //  baseURL: "https://drop2j0y0s.xyz/" + '/api',
-
     timeout: 5000, //默认超时时长
 });
 
